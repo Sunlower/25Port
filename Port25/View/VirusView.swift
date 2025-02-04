@@ -14,6 +14,7 @@ struct VirusView: View {
     @State private var bounceTrojan = false
     @State var count = 0
     @State var message = "xxxx"
+//    @State var resetMessage = false
     
     var body: some View {
         NavigationStack{
@@ -33,7 +34,7 @@ struct VirusView: View {
                         .scaleEffect(bounceTrojan ? 1.3 : 1.0, anchor: .center)
                     
                     ZStack{
-                        TaskMessage(whenAnimationEnd: $whenAnimationEnd, message: message)
+                        TaskMessage(whenAnimationEnd: $whenAnimationEnd, message: $message)
                             .frame(width: geometry.size.width*0.9, height: geometry.size.height*0.25)
                             .overlay {
                                 if whenAnimationEnd {
@@ -47,6 +48,7 @@ struct VirusView: View {
                                 } else {
                                     
                                     if count > 1 {
+                                        
                                         
                                         NavigationLink {
                                             OperationView()
@@ -65,13 +67,13 @@ struct VirusView: View {
                                         Button(action: {
                                             withAnimation(.interpolatingSpring(stiffness: 170, damping: 5)) {
                                                 if count == 0 {
-                                                    self.message = "XXXXX"
+                                                    message = "abc"
                                                         
                                                     self.bounceGhost.toggle()
                                                     self.bounceMalware.toggle()
                                                     count+=1
                                                 } else {
-                                                    self.message = "XXXXX"
+                                                    message = "123"
                                                     self.bounceMalware.toggle()
                                                     self.bounceTrojan.toggle()
                                                     count+=1

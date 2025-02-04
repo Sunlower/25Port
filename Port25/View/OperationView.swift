@@ -139,7 +139,7 @@ struct OperationView: View {
                     
                     ZStack{
                         if popUpIsShown == true {
-                            TaskMessage(whenAnimationEnd: $whenAnimationEnd, message: message)
+                            TaskMessage(whenAnimationEnd: $whenAnimationEnd, message: $message)
                                 .frame(width: geometry.size.width*0.9, height: geometry.size.height*0.25)
                                 .overlay {
                                     if whenAnimationEnd {

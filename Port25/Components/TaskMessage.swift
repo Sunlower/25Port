@@ -12,8 +12,8 @@ struct TaskMessage: View {
     @State private var text1: String = ""
     @State var aux = 0
     @State var rangeMarkdown: (startIndex: Int?, endIndex: Int?) = (nil, nil)
-    var message: String
-
+    @Binding var message: String
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack{
@@ -28,6 +28,12 @@ struct TaskMessage: View {
 
             }
             .onAppear {
+                typeWriter1 {
+                    whenAnimationEnd.toggle()
+                }
+            }
+            .onChange(of: message) {
+                whenAnimationEnd.toggle()
                 typeWriter1 {
                     whenAnimationEnd.toggle()
                 }

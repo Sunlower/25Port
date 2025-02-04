@@ -9,6 +9,7 @@ import SwiftUI
 
 struct IntroView: View {
     @State var whenAnimationEnd = true
+    @State var message = "Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hell"
     var body: some View {
         GeometryReader { geometry in
             NavigationStack{
@@ -20,7 +21,7 @@ struct IntroView: View {
                     
                     
                         ZStack{
-                            TaskMessage(whenAnimationEnd: $whenAnimationEnd, message: "Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hell")
+                            TaskMessage(whenAnimationEnd: $whenAnimationEnd, message: $message)
                                 .frame(width: geometry.size.width*0.5, height: geometry.size.height*0.5)
                                 .overlay {
                                     if whenAnimationEnd {

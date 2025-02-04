@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HappyEndView: View {
     @State var whenAnimationEnd = true
+    @State var message = "Hello, Worl World!Hello, World!Hello, World!Hello, World!Hello, World!"
     var body: some View {
         GeometryReader { geometry in
             NavigationStack{
@@ -17,7 +18,7 @@ struct HappyEndView: View {
                     
                    
                         ZStack{
-                            TaskMessage(whenAnimationEnd: $whenAnimationEnd, message: "Hello, Worl World!Hello, World!Hello, World!Hello, World!Hello, World!")
+                            TaskMessage(whenAnimationEnd: $whenAnimationEnd, message: $message)
                                 .frame(width: geometry.size.width*0.9, height: geometry.size.height*0.3)
                                 .overlay {
                                     if whenAnimationEnd {

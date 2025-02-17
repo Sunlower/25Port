@@ -21,11 +21,10 @@ struct Port25App: App {
                                 Image("bg")
                                     .resizable()
                                     .scaledToFill()
-
-                                Image("goodBob")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(height: geometry.size.height * 0.3)
+                                
+                                RoundedRectangle(cornerRadius: 25)
+                                    .fill(.white)
+                                    .frame(width: geometry.size.width * 0.5 ,height: geometry.size.height * 0.3)
                                     .overlay {
                                         Text("Please, prefer use this application on landscape orientation for a better experience!")
                                             .font(.system(size: 28,
@@ -36,7 +35,7 @@ struct Port25App: App {
                                                                         blue: 55/255))
                                             .multilineTextAlignment(.center)
                                     }
-
+                               
 
                             }
                             .opacity(geometry.size.width < geometry.size.height ? 1 : 0)

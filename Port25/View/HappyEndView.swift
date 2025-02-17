@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HappyEndView: View {
     @State var whenAnimationEnd = true
-    @State var message = "Hello, Worl World!Hello, World!Hello, World!Hello, World!Hello, World!"
+    @State var message = "Hello, Worl World"
     var body: some View {
         GeometryReader { geometry in
             NavigationStack{

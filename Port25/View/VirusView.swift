@@ -14,7 +14,6 @@ struct VirusView: View {
     @State private var bounceTrojan = false
     @State var count = 0
     @State var message = "xxxx"
-//    @State var resetMessage = false
     
     var body: some View {
         NavigationStack{
@@ -51,7 +50,7 @@ struct VirusView: View {
                                         
                                         
                                         NavigationLink {
-                                            OperationView()
+                                            OperationView2()
                                         } label: {
                                             Text("Next")
                                                 .padding()

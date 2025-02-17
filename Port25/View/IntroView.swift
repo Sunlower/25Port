@@ -9,7 +9,7 @@ import SwiftUI
 
 struct IntroView: View {
     @State var whenAnimationEnd = true
-    @State var message = "Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hell"
+    @State var message = "Hello, World!Hello, l"
     var body: some View {
         GeometryReader { geometry in
             NavigationStack{

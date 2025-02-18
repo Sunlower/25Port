@@ -27,7 +27,10 @@ struct OperationView: View {
                 ZStack{
                     SceneMain(scene: "bg")
 
-                    BobView(name: gameplayManager.bobs[gameplayManager.currentLevel].image)
+//                    BobView(name: gameplayManager.bobs[gameplayManager.currentLevel].image)
+//                        .frame(width: geometry.size.width*1,height: geometry.size.height*1)
+//                        .position(x:bobOffset, y: geometry.size.height*0.5)
+                    gameplayManager.bobs[gameplayManager.currentLevel].bobView
                         .frame(width: geometry.size.width*1,height: geometry.size.height*1)
                         .position(x:bobOffset, y: geometry.size.height*0.5)
                     

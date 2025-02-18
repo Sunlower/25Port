@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct Bob: View {
-    @State var bob: String = "goodBob"
+struct BobView: View {
+    @State var name: String = "goodBob"
     var body: some View {
         GeometryReader { geometry in
           
-                Image(bob)
+                Image(name)
                     .resizable()
                     .frame(width: geometry.size.width*0.2,height: geometry.size.height*0.4)
                     .position(x: geometry.size.width*0.5, y: geometry.size.height*0.5)
@@ -23,5 +23,5 @@ struct Bob: View {
 }
 
 #Preview {
-    Bob()
+    BobView()
 }

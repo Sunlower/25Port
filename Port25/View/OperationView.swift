@@ -8,7 +8,9 @@
 
 import SwiftUI
 
-struct OperationView2: View {
+struct OperationView: View {
+    let initialPosition =  -130.0
+    
     @State var whenAnimationEnd = false
     @State var popUpIsShown: Bool = true
     @State var message = "xxxx"
@@ -23,7 +25,7 @@ struct OperationView2: View {
                 ZStack{
                     SceneMain(scene: "bg")
 
-                    Bob(bob: bob)
+                    BobView(bob: bob)
                         .frame(width: geometry.size.width*1,height: geometry.size.height*1)
                         .position(x:bobOffset, y: geometry.size.height*0.5)
                     
@@ -178,5 +180,5 @@ struct OperationView2: View {
 }
 
 #Preview {
-    OperationView2()
+    OperationView()
 }

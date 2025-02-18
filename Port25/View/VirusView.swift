@@ -50,7 +50,7 @@ struct VirusView: View {
                                         
                                         
                                         NavigationLink {
-                                            OperationView2()
+                                            OperationView()
                                         } label: {
                                             Text("Next")
                                                 .padding()

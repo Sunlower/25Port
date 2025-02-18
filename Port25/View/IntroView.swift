@@ -16,7 +16,7 @@ struct IntroView: View {
                 ZStack {
                     SceneMain(scene: "bg")
                     
-                    Bob()
+                    BobView()
                         .position(x: geometry.size.width*0.75, y: geometry.size.height*0.55)
                     
                     

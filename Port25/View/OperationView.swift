@@ -17,7 +17,9 @@ struct OperationView: View {
     @State var bobOffset = -130.0
     @State var countBob = 0
     @State var countDecision = 0
-    @State var bob = "goodBob"
+//    @State var bob = "goodBob"
+    
+    let gameplayManager = GameplayManager.shared
     
     var body: some View {
         GeometryReader { geometry in
@@ -25,7 +27,7 @@ struct OperationView: View {
                 ZStack{
                     SceneMain(scene: "bg")
 
-                    BobView(bob: bob)
+                    BobView(name: gameplayManager.bobs[gameplayManager.currentLevel].image)
                         .frame(width: geometry.size.width*1,height: geometry.size.height*1)
                         .position(x:bobOffset, y: geometry.size.height*0.5)
                     
@@ -102,7 +104,7 @@ struct OperationView: View {
                                     Button {
                                         withAnimation(.easeInOut(duration: 1)) {
                                             self.bobOffset = -geometry.size.width*0.5
-                                            if bob == "goodBob"{
+                                            if gameplayManager.bobs[gameplayManager.currentLevel].name == "goodBob"{
                                                 self.countBob += 1
                                                 self.countDecision -= 1
                                             } else {
@@ -149,7 +151,7 @@ struct OperationView: View {
                                     Button {
                                         withAnimation (.easeInOut(duration: 1)){
                                             self.bobOffset = geometry.size.width*1.2
-                                            if bob == "goodBob"{
+                                            if gameplayManager.bobs[gameplayManager.currentLevel].name == "goodBob"{
                                                 self.countBob += 1
                                                 self.countDecision += 1
                                             } else {

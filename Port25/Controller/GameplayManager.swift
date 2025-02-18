@@ -6,13 +6,16 @@
 //
 
 class GameplayManager {
+    
+    static var shared = GameplayManager()
+    
     var bobs: [Bob]
     
     var currentLevel: Int
     
     var score: Int = 0
     
-    init() {
+    private init() {
         
         let ghost = Bob(name: "ghost", description: "virus safado", image: "ghostBob", initialPhrase: "boooooo", finalPhrase: "buaaaaa", isThreat: true)
         let trojan = Bob(name: "trojan", description: "cavalo", image: "trojanBob", initialPhrase: "shiu tem ngm aqui n", finalPhrase: "vish", isThreat: true)

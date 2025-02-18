@@ -21,14 +21,14 @@ struct VirusView: View {
                 ZStack {
                     SceneMain(scene: "bg")
                     
-                    Bob(bob: "ghostBob")
+                    BobView(name: "ghostBob")
                         .position(x: geometry.size.width*0.25, y: geometry.size.height*0.5)
                         .scaleEffect(bounceGhost ? 1.3 : 1.0, anchor: .center)
                     
-                    Bob(bob: "malwareBob")
+                    BobView(name: "spywareBob")
                         .scaleEffect(bounceMalware ? 1.3 : 1.0, anchor: .center)
                     
-                    Bob(bob: "trojanBob")
+                    BobView(name: "trojanBob")
                         .position(x: geometry.size.width*0.75, y: geometry.size.height*0.5)
                         .scaleEffect(bounceTrojan ? 1.3 : 1.0, anchor: .center)
                     

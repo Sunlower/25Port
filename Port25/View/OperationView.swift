@@ -18,6 +18,9 @@ struct OperationView: View {
     @State var countDecision = 0
 //    @State var bob = "goodBob"
     
+    @State var isDescriptionMessageShown = true
+    @State var descriptionText = GameplayManager.shared.bobs[0].initialPhrase
+    
     @ObservedObject var gameplayManager = GameplayManager.shared
     
     var body: some View {
@@ -60,8 +63,6 @@ struct OperationView: View {
                         .position(x: geometry.size.width*0.5, y: geometry.size.height*0.88)
                     
                     if popUpIsShown == true {
-                        
-                        
                         TaskMessage(whenAnimationEnd: $whenAnimationEnd, message: $message)
                             .frame(width: geometry.size.width*0.4, height: geometry.size.height*0.4)
                             .overlay {
@@ -94,144 +95,45 @@ struct OperationView: View {
                         
                         
                     } else {
-                        
-                            HStack{
-                                
-                                
-//                                if countBob == 3 {
-//                                    if countDecision == 3 {
-//                                        
-//                                        NavigationLink {
-//                                            HappyEndView()
-//                                        } label: {
-//                                            Image("noBtn")
-//                                                .resizable()
-//                                                .frame(width: geometry.size.width*0.15, height: geometry.size.height*0.12)
-//                                                .position(x: geometry.size.width*0.28, y: geometry.size.height*0.92)
-//                                            
-//                                        }
-//                                        
-//                                    } else {
-//                                        NavigationLink {
-//                                            BadEndView()
-//                                        } label: {
-//                                            Image("noBtn")
-//                                                .resizable()
-//                                                .frame(width: geometry.size.width*0.15, height: geometry.size.height*0.12)
-//                                                .position(x: geometry.size.width*0.28, y: geometry.size.height*0.92)
-//                                            
-//                                        }
-//                                    }
-//                                    
-//                                } else {
-//                                    Button {
-//                                        withAnimation(.easeInOut(duration: 1)) {
-//                                            self.bobOffset = -geometry.size.width*0.5
-//                                            if gameplayManager.bobs[gameplayManager.currentLevel].name == "goodBob"{
-//                                                self.countBob += 1
-//                                                self.countDecision -= 1
-//                                            } else {
-//                                                self.countBob += 1
-//                                                self.countDecision += 1
-//                                            }
-//                                            
-//                                        }
-//                                        
-//                                    } label: {
-//                                        Image("noBtn")
-//                                            .resizable()
-//                                            .frame(width: geometry.size.width*0.15, height: geometry.size.height*0.12)
-//                                            .position(x: geometry.size.width*0.28, y: geometry.size.height*0.92)
-//                                    }.buttonStyle(BorderlessButtonStyle())
-//                                }
-                                
-//                                if countBob == 3 {
-//                                    if countDecision == 3 {
-//                                        
-//                                        NavigationLink {
-//                                            HappyEndView()
-//                                        } label: {
-//                                            Image("yesBtn")
-//                                                .resizable()
-//                                                .frame(width: geometry.size.width*0.15, height: geometry.size.height*0.12)
-//                                                .position(x: geometry.size.width*0.22, y: geometry.size.height*0.92)
-//                                            
-//                                        }
-//                                        
-//                                    } else {
-//                                        NavigationLink {
-//                                            BadEndView()
-//                                        } label: {
-//                                            Image("yesBtn")
-//                                                .resizable()
-//                                                .frame(width: geometry.size.width*0.15, height: geometry.size.height*0.12)
-//                                                .position(x: geometry.size.width*0.22, y: geometry.size.height*0.92)
-//                                            
-//                                        }
-//                                    }
-//                                    
-//                                } else {
+                        if isDescriptionMessageShown {
+                            ZStack{
+                                TaskMessage(whenAnimationEnd: $whenAnimationEnd, message: $descriptionText)
+                                    .frame(width: geometry.size.width*0.9, height: geometry.size.height*0.3)
+                                    .overlay {
+                                            
+                                            Button {
+                                                isDescriptionMessageShown = false
+                                            } label: {
+                                                Text("Okay")
+                                                    .padding()
+                                                    .cornerRadius(12)
+                                                    .tint(.white)
+                                                    .background(.blue)
+                                            }
+                                            .offset(y: geometry.size.height*0.1)
+                                            
+                                        }
 
-//                                if gameplayManager.currentLevel == 3 {
-//                                    HStack {
-////                                        NavigationLink {
-////                                            HappyEndView()
-////                                        } label: {
-////                                            Image("yesBtn")
-////                                                .resizable()
-////                                                .frame(width: geometry.size.width*0.15, height: geometry.size.height*0.12)
-////                                                .position(x: geometry.size.width*0.22, y: geometry.size.height*0.92)
-////                                            
-////                                        }
-//                                        
-//                                        NavigationLink {
-//                                            if gameplayManager.score < 4 {
-//                                                BadEndView()
-//                                            } else {
-//                                                HappyEndView()
-//                                            }
-//                                        } label: {
-//                                            Image("noBtn")
-//                                                .resizable()
-//                                                .frame(width: geometry.size.width*0.15, height: geometry.size.height*0.12)
-//                                                .position(x: geometry.size.width*0.28, y: geometry.size.height*0.92)
-//
-//                                        }
-//                                        
-//                                        NavigationLink {
-//                                            if gameplayManager.score < 4 {
-//                                                BadEndView()
-//                                            } else {
-//                                                HappyEndView()
-//                                            }
-//                                        } label: {
-//                                            Image("yesBtn")
-//                                                .resizable()
-//                                                .frame(width: geometry.size.width*0.15, height: geometry.size.height*0.12)
-//                                                .position(x: geometry.size.width*0.22, y: geometry.size.height*0.92)
-//                                            
-//                                        }
-//                                    }
-                                    
-//                                } else {
+                            }
+                            .position(x: geometry.size.width*0.5, y: geometry.size.height*0.85)
+                        } else {
+                            HStack{
                                     HStack {
                                         Button {
                                             withAnimation(.easeInOut(duration: 1)) {
                                                 self.bobOffset = -geometry.size.width*0.5
-    //                                            if gameplayManager.bobs[gameplayManager.currentLevel].name == "goodBob"{
-    //                                                self.countBob += 1
-    //                                                self.countDecision -= 1
-    //                                            } else {
-    //                                                self.countBob += 1
-    //                                                self.countDecision += 1
-    //                                            }
                                                 gameplayManager.validateChoice(didAllowEntrance: false)
                                                 
                                             } completion: {
                                                 gameplayManager.nextLevel()
                                                 self.bobOffset = -130.0
-                                                
+                                                if gameplayManager.currentLevel <= 3 {
+                                                    descriptionText = gameplayManager.bobs[gameplayManager.currentLevel].initialPhrase
+                                                }
                                                 withAnimation(.easeInOut(duration: 1)) {
+                                                    if gameplayManager.currentLevel <= 3 {
+                                                        isDescriptionMessageShown = true
+                                                    }
                                                     self.bobOffset = geometry.size.width*0.5
                                                 }
                                             }
@@ -251,8 +153,14 @@ struct OperationView: View {
                                                     gameplayManager.nextLevel()
                                                     
                                                     self.bobOffset = -130.0
+                                                    if gameplayManager.currentLevel <= 3 {
+                                                        descriptionText = gameplayManager.bobs[gameplayManager.currentLevel].initialPhrase
+                                                    }
                                                     
                                                     withAnimation(.easeInOut(duration: 1)) {
+                                                        if gameplayManager.currentLevel <= 3 {
+                                                            isDescriptionMessageShown = true
+                                                        }
                                                         self.bobOffset = geometry.size.width*0.5
                                                     }
                                                 }
@@ -264,9 +172,10 @@ struct OperationView: View {
                                                     .position(x: geometry.size.width*0.22, y: geometry.size.height*0.92)
                                             }.buttonStyle(BorderlessButtonStyle())
                                     }
-//                                }
                                 
                             }
+                        }
+                            
                         
                     }
                 }

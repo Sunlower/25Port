@@ -20,6 +20,7 @@ struct OperationView: View {
     
     @State var isDescriptionMessageShown = true
     @State var descriptionText = GameplayManager.shared.bobs[0].initialPhrase
+    @State var isFinalMessage = false
     
     @ObservedObject var gameplayManager = GameplayManager.shared
     
@@ -102,7 +103,28 @@ struct OperationView: View {
                                     .overlay {
                                             
                                             Button {
-                                                isDescriptionMessageShown = false
+                                                if isFinalMessage {
+                                                    
+//                                                    withAnimation(.easeInOut(duration: 1)) {
+                                                    gameplayManager.nextLevel()
+                                                        if gameplayManager.currentLevel <= 3 {
+                                                            self.bobOffset = -130.0
+                                                            isDescriptionMessageShown = true
+                                                            withAnimation(.easeInOut(duration: 1)) {
+                                                                self.bobOffset = geometry.size.width*0.5
+                                                                descriptionText = gameplayManager.bobs[gameplayManager.currentLevel].initialPhrase
+                                                                
+                                                            }
+                                                            isFinalMessage = false
+//                                                            descriptionText = ""
+                                                        }
+//                                                    } completion: {
+//                                                        isDescriptionMessageShown = false
+                                                        
+//                                                    }
+                                                } else {
+                                                    isDescriptionMessageShown = false
+                                                }
                                             } label: {
                                                 Text("Okay")
                                                     .padding()
@@ -123,19 +145,22 @@ struct OperationView: View {
                                             withAnimation(.easeInOut(duration: 1)) {
                                                 self.bobOffset = -geometry.size.width*0.5
                                                 gameplayManager.validateChoice(didAllowEntrance: false)
-                                                
-                                            } completion: {
-                                                gameplayManager.nextLevel()
-                                                self.bobOffset = -130.0
                                                 if gameplayManager.currentLevel <= 3 {
-                                                    descriptionText = gameplayManager.bobs[gameplayManager.currentLevel].initialPhrase
+                                                    descriptionText = gameplayManager.bobs[gameplayManager.currentLevel].finalPhraseDeny
+                                                    isDescriptionMessageShown = true
                                                 }
-                                                withAnimation(.easeInOut(duration: 1)) {
-                                                    if gameplayManager.currentLevel <= 3 {
-                                                        isDescriptionMessageShown = true
-                                                    }
-                                                    self.bobOffset = geometry.size.width*0.5
-                                                }
+                                            }
+                                            completion: {
+                                                isFinalMessage = true
+//                                                self.bobOffset = -130.0
+//                                                gameplayManager.nextLevel()
+//                                                withAnimation(.easeInOut(duration: 1)) {
+//                                                    if gameplayManager.currentLevel <= 3 {
+//                                                        descriptionText = gameplayManager.bobs[gameplayManager.currentLevel].initialPhrase
+//                                                        isDescriptionMessageShown = true
+//                                                    }
+//                                                    self.bobOffset = geometry.size.width*0.5
+//                                                }
                                             }
                                             
                                         } label: {
@@ -149,20 +174,15 @@ struct OperationView: View {
                                                 withAnimation (.easeInOut(duration: 1)){
                                                     self.bobOffset = geometry.size.width*1.2
                                                     gameplayManager.validateChoice(didAllowEntrance: true)
-                                                } completion: {
-                                                    gameplayManager.nextLevel()
-                                                    
-                                                    self.bobOffset = -130.0
                                                     if gameplayManager.currentLevel <= 3 {
-                                                        descriptionText = gameplayManager.bobs[gameplayManager.currentLevel].initialPhrase
+                                                        descriptionText = gameplayManager.bobs[gameplayManager.currentLevel].finalPhraseOpen
+                                                        isDescriptionMessageShown = true
                                                     }
+                                                }
+                                                completion: {
+//                                                    gameplayManager.nextLevel()
+                                                    isFinalMessage = true
                                                     
-                                                    withAnimation(.easeInOut(duration: 1)) {
-                                                        if gameplayManager.currentLevel <= 3 {
-                                                            isDescriptionMessageShown = true
-                                                        }
-                                                        self.bobOffset = geometry.size.width*0.5
-                                                    }
                                                 }
                                                 
                                             } label: {

@@ -171,49 +171,64 @@ struct OperationView: View {
 //                                    }
 //                                    
 //                                } else {
-                                HStack {
-                                    Button {
-                                        withAnimation(.easeInOut(duration: 1)) {
-                                            self.bobOffset = -geometry.size.width*0.5
-//                                            if gameplayManager.bobs[gameplayManager.currentLevel].name == "goodBob"{
-//                                                self.countBob += 1
-//                                                self.countDecision -= 1
+
+//                                if gameplayManager.currentLevel == 3 {
+//                                    HStack {
+////                                        NavigationLink {
+////                                            HappyEndView()
+////                                        } label: {
+////                                            Image("yesBtn")
+////                                                .resizable()
+////                                                .frame(width: geometry.size.width*0.15, height: geometry.size.height*0.12)
+////                                                .position(x: geometry.size.width*0.22, y: geometry.size.height*0.92)
+////                                            
+////                                        }
+//                                        
+//                                        NavigationLink {
+//                                            if gameplayManager.score < 4 {
+//                                                BadEndView()
 //                                            } else {
-//                                                self.countBob += 1
-//                                                self.countDecision += 1
+//                                                HappyEndView()
 //                                            }
-                                            gameplayManager.validateChoice(didAllowEntrance: false)
-                                            
-                                        } completion: {
-                                            gameplayManager.nextLevel()
-                                            self.bobOffset = -130.0
-                                            
-                                            withAnimation(.easeInOut(duration: 1)) {
-                                                self.bobOffset = geometry.size.width*0.5
-                                            }
-                                        }
-                                        
-                                    } label: {
-                                        Image("noBtn")
-                                            .resizable()
-                                            .frame(width: geometry.size.width*0.15, height: geometry.size.height*0.12)
-                                            .position(x: geometry.size.width*0.28, y: geometry.size.height*0.92)
-                                    }.buttonStyle(BorderlessButtonStyle())
+//                                        } label: {
+//                                            Image("noBtn")
+//                                                .resizable()
+//                                                .frame(width: geometry.size.width*0.15, height: geometry.size.height*0.12)
+//                                                .position(x: geometry.size.width*0.28, y: geometry.size.height*0.92)
+//
+//                                        }
+//                                        
+//                                        NavigationLink {
+//                                            if gameplayManager.score < 4 {
+//                                                BadEndView()
+//                                            } else {
+//                                                HappyEndView()
+//                                            }
+//                                        } label: {
+//                                            Image("yesBtn")
+//                                                .resizable()
+//                                                .frame(width: geometry.size.width*0.15, height: geometry.size.height*0.12)
+//                                                .position(x: geometry.size.width*0.22, y: geometry.size.height*0.92)
+//                                            
+//                                        }
+//                                    }
                                     
+//                                } else {
+                                    HStack {
                                         Button {
-                                            withAnimation (.easeInOut(duration: 1)){
-                                                self.bobOffset = geometry.size.width*1.2
-//                                                if gameplayManager.bobs[gameplayManager.currentLevel].name == "goodBob"{
-//                                                    self.countBob += 1
-//                                                    self.countDecision += 1
-//                                                } else {
-//                                                    self.countBob += 1
-//                                                    self.countDecision -= 1
-//                                                }
-                                                gameplayManager.validateChoice(didAllowEntrance: true)
+                                            withAnimation(.easeInOut(duration: 1)) {
+                                                self.bobOffset = -geometry.size.width*0.5
+    //                                            if gameplayManager.bobs[gameplayManager.currentLevel].name == "goodBob"{
+    //                                                self.countBob += 1
+    //                                                self.countDecision -= 1
+    //                                            } else {
+    //                                                self.countBob += 1
+    //                                                self.countDecision += 1
+    //                                            }
+                                                gameplayManager.validateChoice(didAllowEntrance: false)
+                                                
                                             } completion: {
                                                 gameplayManager.nextLevel()
-                                                
                                                 self.bobOffset = -130.0
                                                 
                                                 withAnimation(.easeInOut(duration: 1)) {
@@ -222,13 +237,35 @@ struct OperationView: View {
                                             }
                                             
                                         } label: {
-                                            Image("yesBtn")
+                                            Image("noBtn")
                                                 .resizable()
                                                 .frame(width: geometry.size.width*0.15, height: geometry.size.height*0.12)
-                                                .position(x: geometry.size.width*0.22, y: geometry.size.height*0.92)
+                                                .position(x: geometry.size.width*0.28, y: geometry.size.height*0.92)
                                         }.buttonStyle(BorderlessButtonStyle())
-                                }
+                                        
+                                            Button {
+                                                withAnimation (.easeInOut(duration: 1)){
+                                                    self.bobOffset = geometry.size.width*1.2
+                                                    gameplayManager.validateChoice(didAllowEntrance: true)
+                                                } completion: {
+                                                    gameplayManager.nextLevel()
+                                                    
+                                                    self.bobOffset = -130.0
+                                                    
+                                                    withAnimation(.easeInOut(duration: 1)) {
+                                                        self.bobOffset = geometry.size.width*0.5
+                                                    }
+                                                }
+                                                
+                                            } label: {
+                                                Image("yesBtn")
+                                                    .resizable()
+                                                    .frame(width: geometry.size.width*0.15, height: geometry.size.height*0.12)
+                                                    .position(x: geometry.size.width*0.22, y: geometry.size.height*0.92)
+                                            }.buttonStyle(BorderlessButtonStyle())
+                                    }
 //                                }
+                                
                             }
                         
                     }

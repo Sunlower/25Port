@@ -15,6 +15,8 @@ struct VirusView: View {
     @State var count = 0
     @State var message = "The man-in-the-middle (MitM) attack is a criminal method of intercepting communication between two hosts and, consequently, stealing information. The structure of the attack is basic but functional."
     
+    @ObservedObject var gameplayManager = GameplayManager.shared
+    
     var body: some View {
         NavigationStack{
             GeometryReader{ geometry in
@@ -50,7 +52,15 @@ struct VirusView: View {
                                         
                                         
                                         NavigationLink {
-                                            OperationView()
+                                            if gameplayManager.currentLevel < 4 {
+                                                OperationView()
+                                            } else {
+                                                if gameplayManager.score < 4 {
+                                                    BadEndView()
+                                                } else {
+                                                    HappyEndView()
+                                                }
+                                            }
 //                                            GhostLevel()
                                         } label: {
                                             Text("Next")

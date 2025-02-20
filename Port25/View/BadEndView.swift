@@ -10,6 +10,9 @@ import SwiftUI
 struct BadEndView: View {
     @State var whenAnimationEnd = true
     @State var message = "Oh no, the malware managed to invade and infect the device. Please try again to change this final."
+    
+    @ObservedObject var gameplayManager = GameplayManager.shared
+    
     var body: some View {
         GeometryReader { geometry in
             NavigationStack{
@@ -30,15 +33,16 @@ struct BadEndView: View {
                                             .offset(y: geometry.size.height*0.1)
 
                                     } else {
-                                        NavigationLink {
-                                            ContentView()
+                                        
+                                        Button {
+                                            gameplayManager.score = 0
+                                            gameplayManager.currentLevel = 0
                                         } label: {
                                             Text("Next")
                                                 .padding()
                                                 .cornerRadius(12)
                                                 .tint(.white)
                                                 .background(.blue)
-
                                         }
                                         .offset(y: geometry.size.height*0.1)
                                     }

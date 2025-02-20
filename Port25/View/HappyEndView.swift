@@ -10,6 +10,8 @@ import SwiftUI
 struct HappyEndView: View {
     @State var whenAnimationEnd = true
     @State var message = "Congratulations, partner! You managed to block all the malware and kept the information pathway to the device secure."
+    
+    @ObservedObject var gameplayManager = GameplayManager.shared
     var body: some View {
         GeometryReader { geometry in
             NavigationStack{
@@ -30,17 +32,19 @@ struct HappyEndView: View {
                                             .offset(y: geometry.size.height*0.1)
 
                                     } else {
-                                        NavigationLink {
-                                            ContentView()
+                                        
+                                        Button {
+                                            gameplayManager.score = 0
+                                            gameplayManager.currentLevel = 0
                                         } label: {
                                             Text("Thanks for playing")
                                                 .padding()
                                                 .cornerRadius(12)
                                                 .tint(.white)
                                                 .background(.blue)
-
                                         }
                                         .offset(y: geometry.size.height*0.1)
+                                        
                                     }
                                 }
 

@@ -13,7 +13,7 @@ struct VirusView: View {
     @State private var bounceMalware = false
     @State private var bounceTrojan = false
     @State var count = 0
-    @State var message = "xxxx"
+    @State var message = "The man-in-the-middle (MitM) attack is a criminal method of intercepting communication between two hosts and, consequently, stealing information. The structure of the attack is basic but functional."
     
     var body: some View {
         NavigationStack{
@@ -51,6 +51,7 @@ struct VirusView: View {
                                         
                                         NavigationLink {
                                             OperationView()
+//                                            GhostLevel()
                                         } label: {
                                             Text("Next")
                                                 .padding()
@@ -66,13 +67,13 @@ struct VirusView: View {
                                         Button(action: {
                                             withAnimation(.interpolatingSpring(stiffness: 170, damping: 5)) {
                                                 if count == 0 {
-                                                    message = "abc"
+                                                    message = "Spyware installs itself on a device without providing adequate warning or without the person's consent. Once installed, it can monitor online behavior, collect sensitive information, alter device settings, and reduce device performance."
                                                         
                                                     self.bounceGhost.toggle()
                                                     self.bounceMalware.toggle()
                                                     count+=1
                                                 } else {
-                                                    message = "123"
+                                                    message = "A Trojan is malicious software capable of disguising itself as common programs to infect a device. This type of malware is widely used by cybercriminals, hackers, or security institutions to discreetly infiltrate computers."
                                                     self.bounceMalware.toggle()
                                                     self.bounceTrojan.toggle()
                                                     count+=1

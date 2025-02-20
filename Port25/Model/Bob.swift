@@ -9,15 +9,17 @@ class Bob {
     var name: String = ""
     var description: String = ""
     var initialPhrase: String = ""
-    var finalPhrase: String = ""
+    var finalPhraseOpen: String = ""
+    var finalPhraseDeny: String = ""
     var isThreat: Bool = false
     var bobView: BobView
     
-    init(name: String, description: String, initialPhrase: String, finalPhrase: String, isThreat: Bool, bobView: BobView) {
+    init(name: String, description: String, initialPhrase: String, isThreat: Bool, bobView: BobView, phraseDeny: String, phraseOpen: String) {
         self.name = name
         self.description = description
         self.initialPhrase = initialPhrase
-        self.finalPhrase = finalPhrase
+        self.finalPhraseOpen = phraseOpen
+        self.finalPhraseDeny = phraseDeny
         self.isThreat = isThreat
         self.bobView = bobView
     }

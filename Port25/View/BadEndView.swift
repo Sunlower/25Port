@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BadEndView: View {
     @State var whenAnimationEnd = true
-    @State var message = "Hello, Worl World!Hello, World!Hello, World!Hello, World!Hello, World!"
+    @State var message = "Oh no, the malware managed to invade and infect the device. Please try again to change this final."
     var body: some View {
         GeometryReader { geometry in
             NavigationStack{

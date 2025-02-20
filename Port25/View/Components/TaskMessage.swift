@@ -48,7 +48,7 @@ struct TaskMessage: View {
             text1 = ""
         }
         if position < message.count {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.04) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.0004) {
                 if message[position] == "*" {
                     aux += 1
                     text1.append("")

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HappyEndView: View {
     @State var whenAnimationEnd = true
-    @State var message = "Hello, Worl World"
+    @State var message = "Congratulations, partner! You managed to block all the malware and kept the information pathway to the device secure."
     var body: some View {
         GeometryReader { geometry in
             NavigationStack{
@@ -23,7 +23,7 @@ struct HappyEndView: View {
                                 .overlay {
                                     if whenAnimationEnd {
 
-                                        Text("Next")
+                                        Text("Thanks for playing")
                                             .padding()
                                             .cornerRadius(12)
                                             .background(.gray)
@@ -33,7 +33,7 @@ struct HappyEndView: View {
                                         NavigationLink {
                                             ContentView()
                                         } label: {
-                                            Text("Next")
+                                            Text("Thanks for playing")
                                                 .padding()
                                                 .cornerRadius(12)
                                                 .tint(.white)

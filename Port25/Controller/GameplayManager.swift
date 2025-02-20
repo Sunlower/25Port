@@ -5,23 +5,29 @@
 //  Created by Ieda Xavier on 18/02/25.
 //
 
-class GameplayManager {
+import SwiftUI
+
+class GameplayManager: ObservableObject {
     
     static var shared = GameplayManager()
     
     var bobs: [Bob]
     
-    var currentLevel: Int
+    @Published var currentLevel: Int
     
-    var score: Int = 0
+    @Published var score: Int = 0
     
     private init() {
         
-        let ghost = Bob(name: "ghost", description: "virus safado", initialPhrase: "boooooo", finalPhrase: "buaaaaa", isThreat: true, bobView: BobView(name: "ghostBob"))
-            
-        let trojan = Bob(name: "trojan", description: "cavalo", initialPhrase: "shiu tem ngm aqui n", finalPhrase: "vish", isThreat: true, bobView: BobView(name: "trojanBob"))
-        let goodBob = Bob(name: "Good Bob", description: "quero café", initialPhrase: "bom dia", finalPhrase: "deus abençoe", isThreat: false, bobView: BobView(name: "goodBob"))
-        let spyware = Bob(name: "spyware", description: "twilight", initialPhrase: "não, eu não sou espião", finalPhrase: "tem não", isThreat: true, bobView: BobView(name: "spywareBob"))
+        let ghost = Bob(name: "ghost", description: "The man-in-the-middle (MitM) attack is a criminal method of intercepting communication between two hosts and, consequently, stealing information. The structure of the attack is basic but functional.", initialPhrase: "boooooo", isThreat: true, bobView: BobView(name: "ghostBox"), phraseDeny: "buaaaaa", phraseOpen: "buahahahahaa")
+        
+        let trojan = Bob(name: "trojan", description: "A Trojan is malicious software capable of disguising itself as common programs to infect a device. This type of malware is widely used by cybercriminals, hackers, or security institutions to discreetly infiltrate computers.", initialPhrase: "shiu tem ngm aqui n", isThreat: true, bobView: BobView(name: "trojanBox"), phraseDeny: "It seems I was blocked... but don’t worry, I’ll be back.", phraseOpen: "MUDAR DEPOIS")
+    
+                         
+        let goodBob = Bob(name: "goodBob", description: "quero café", initialPhrase:  "Hello, my friend, I believe everything is ready for me to proceed.", isThreat: false, bobView: BobView(name: "bobBox"), phraseDeny: "deus abençoe", phraseOpen: "amem")
+       
+        let spyware = Bob(name: "spyware", description: "Spyware installs itself on a device without providing adequate warning or without the person's consent. Once installed, it can monitor online behavior, collect sensitive information, alter device settings, and reduce device performance.", initialPhrase: "não, eu não sou espião", isThreat: true, bobView: BobView(name: "spyWareBox"), phraseDeny: "blz", phraseOpen: "blz")
+        
         
         bobs = [ghost, trojan, goodBob, spyware]
         currentLevel = 0
